@@ -1,6 +1,10 @@
 from django.http import HttpResponse
+from django.template import RequestContext, loader
 
-# Create your views here.
-def index(request):
-    """The index page"""
-    return HttpResponse("Hello, world!")
+
+def page(request, current):
+    """View for pages"""
+    current = current or 'index'
+    template = loader.get_template('pages/{}.html'.format(current))
+    context = RequestContext(request, {'current': current})
+    return HttpResponse(template.render(context))

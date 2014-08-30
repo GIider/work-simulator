@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}Hello World!{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/layout.css" %}"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="acquirebondsman">Get your trainee here!</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="registration">Registration</a></li>
+        <li><a href="players">Players</a></li>
+    </ul>
+</nav>
+
+    {% block content%}Hello World!{% endblock %}
+</body>
+</html>
