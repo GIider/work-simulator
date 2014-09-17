@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, redirect, session, escape
+import os
+from flask import Flask, render_template, request, redirect, session, escape, flash
 
 app = Flask(__name__)
-app.secret_key = 'Bruce Schneier knows Alice and Bob\'s shared secret.'
+
+# Generate a new secret key every time we restart to invalidate the session.
+# If you want a persisting session while you modify files simply use a static string
+app.secret_key = os.urandom(32)  # 'Bruce Schneier knows Alice and Bob\'s shared secret.'
 
 @app.route('/')
 def index():
     if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
+        return render_template('index.html', username=escape(session['username']))
 
     return redirect('login')
 
@@ -20,6 +24,7 @@ def login():
             error = 'Username can\'t be blank!'
         else:
             session['username'] = username
+            flash('You were logged in')
             return redirect('')
 
     return render_template('login.html', error=error)
