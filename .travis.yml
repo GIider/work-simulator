@@ -6,6 +6,6 @@ install:
   - pip install pep8 --use-mirrors
   - pip install https://github.com/dcramer/pyflakes/tarball/master
 before_script:
-  - "pep8 --exclude=migrations --ignore=E501,E225 work_simulator"
+  - "pep8 --exclude=migrations --ignore=E501,E225 src"
 script:
   - nosetests
