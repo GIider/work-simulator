@@ -2,6 +2,11 @@
 {% block content %}
   <h1>This is the Index</h1>
 
-    Welcome {{ username }}!
+    {% if 'player' in session %}
+    Welcome, {{ session['player'].username }}!
+    {% else %}
+    Welcome, stranger!
+    {% endif %}
+
 
 {% endblock %}

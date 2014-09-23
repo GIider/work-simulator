@@ -4,6 +4,7 @@ import os
 from flask import Flask, render_template, request, redirect, session
 
 import decorator
+import player
 
 app = Flask(__name__)
 
@@ -23,12 +24,7 @@ def index():
 @app.route('/pages')
 @app.route('/pages/<page>')
 def pages(page='index'):
-    username = ''
-    if 'username' in session:
-        username = session['username']
-
-    return render_template('pages/{}.html'.format(page),
-                           username=username)
+    return render_template('pages/{}.html'.format(page))
 
 
 @app.route('/pages/login', methods=['GET', 'POST'])
@@ -39,7 +35,7 @@ def login():
         if not username:
             error = 'Username can\'t be blank!'
         else:
-            session['username'] = username
+            session['player'] = player.Player.get_player_from_database(username=username).serialized_player
             return redirect('')
 
     return render_template('pages/login.html', error=error)
@@ -47,8 +43,8 @@ def login():
 
 @app.route('/pages/logout')
 def logout():
-    if 'username' in session:
-        session.pop('username')
+    if 'player' in session:
+        session.pop('player')
 
     return redirect('/')
 
