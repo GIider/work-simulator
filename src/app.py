@@ -15,14 +15,16 @@ app.secret_key = os.urandom(32)
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return render_template('index.html',
-                               username=escape(session['username']))
-
-    return redirect('login')
+    return redirect('/pages')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/pages')
+@app.route('/pages/<page>')
+def pages(page='index'):
+    return render_template('pages/{}.html'.format(page))
+
+
+@app.route('/pages/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -34,7 +36,13 @@ def login():
             flash('You were logged in')
             return redirect('')
 
-    return render_template('login.html', error=error)
+    return render_template('pages/login.html', error=error)
+
+
+@app.route('/game')
+@app.route('/game/<page>')
+def game(page='index'):
+    return render_template('game/{}.html'.format(page))
 
 
 if __name__ == '__main__':

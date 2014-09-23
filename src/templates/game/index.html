@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <nav>
+        <ul>
+            <li><a href="/game/players">Players</a></li>
+            <li><a href="/game/acquirebondsman">Buy trainee</a></li>
+        </ul>
+    </nav>
+
+    {% block game_content %}
+        Here it comes...
+    {% endblock %}
+
+{% endblock %}
