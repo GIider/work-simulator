@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
 import os
-from flask import Flask, render_template, request, redirect, session, escape, flash
+from flask import Flask, render_template, request, redirect, session, escape,\
+    flash
 
 app = Flask(__name__)
 
 # Generate a new secret key every time we restart to invalidate the session.
-# If you want a persisting session while you modify files simply use a static string
-app.secret_key = os.urandom(32)  # 'Bruce Schneier knows Alice and Bob\'s shared secret.'
+# If you want a persisting session while you modify files simply use a static
+#  string
+
+# 'Bruce Schneier knows Alice and Bob\'s shared secret.'
+app.secret_key = os.urandom(32)
+
 
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('index.html', username=escape(session['username']))
+        return render_template('index.html',
+                               username=escape(session['username']))
 
     return redirect('login')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
