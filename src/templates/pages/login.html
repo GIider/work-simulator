@@ -1,29 +1,17 @@
 {% extends "main.html" %}
 
-{% block scrub %}
-<div class="container">
-  <h1>Login you scrub</h1>
-
-  {% if error %}
-    Login failed! {{ error }}
-  {% endif %}
-
-  <form action="login" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <input type="submit" value="Login">
-  </form>
-</div>
-{% endblock %}
-
 {% block content %}
 
-<form role="form">
-    <h2>Please sign in</h2>
+<form role="form" action="/pages/login" method="post">
+    <h2>Login you scrub</h2>
+
+    {% if error %}
+        Login failed! {{ error }}
+    {% endif %}
 
     <div class="form-group">
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" value="123lol" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

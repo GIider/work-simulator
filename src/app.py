@@ -21,7 +21,12 @@ def index():
 @app.route('/pages')
 @app.route('/pages/<page>')
 def pages(page='index'):
-    return render_template('pages/{}.html'.format(page))
+    username = ''
+    if 'username' in session:
+        username = session['username']
+
+    return render_template('pages/{}.html'.format(page),
+                           username=username)
 
 
 @app.route('/pages/login', methods=['GET', 'POST'])
