@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
-from flask import Flask, render_template, request, redirect, session, escape,\
-    flash
+
+from flask import Flask, render_template, request, redirect, session
+
+import decorator
 
 app = Flask(__name__)
 
 # Generate a new secret key every time we restart to invalidate the session.
 # If you want a persisting session while you modify files simply use a static
-#  string
+# string
 
 # 'Bruce Schneier knows Alice and Bob\'s shared secret.'
 app.secret_key = os.urandom(32)
@@ -38,14 +40,22 @@ def login():
             error = 'Username can\'t be blank!'
         else:
             session['username'] = username
-            flash('You were logged in')
             return redirect('')
 
     return render_template('pages/login.html', error=error)
 
 
+@app.route('/pages/logout')
+def logout():
+    if 'username' in session:
+        session.pop('username')
+
+    return redirect('/')
+
+
 @app.route('/game')
 @app.route('/game/<page>')
+@decorator.login_required
 def game(page='index'):
     return render_template('game/{}.html'.format(page))
 
