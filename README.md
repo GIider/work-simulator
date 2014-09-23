@@ -13,4 +13,4 @@ Requirements
 
 Please note
 -----------
-We are using [SCSS](http://sass-lang.com/install) and [CoffeScript](http://coffeescript.org/).
+We use [SCSS](http://sass-lang.com/install) and [CoffeScript](http://coffeescript.org/).
