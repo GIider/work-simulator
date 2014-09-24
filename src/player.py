@@ -2,6 +2,7 @@
 from collections import defaultdict
 
 import game
+import exception
 
 
 class Player(object):
@@ -10,24 +11,38 @@ class Player(object):
     def __init__(self, username):
         # A dictionary of entity: amount owned
         self.owned_entities = defaultdict(int)  # {entity: 0 for entity in game.AVAILABLE_ENTITIES}
-        self.money = 0
+        self.money = 10
         self.username = username
 
     # Fake stub
     @classmethod
     def get_player_from_database(cls, username):
         """Fetch a player from the database"""
-        player = cls(username=username)
+        # TODO: Look into flask logging
+        player = DATABASE.get(username, None)
+        if player is None:
+            print('Creating new player object "%s"' % username)
+            player = cls(username=username)
+            DATABASE[username] = player
+        else:
+            print('Restoring player "%s" from database' % username)
 
         return player
 
-    def acquire_entity(self, entity):
+    def acquire_entity(self, entity_id):
         """Acquire a new entity"""
-        assert isinstance(entity, game.AbstractMoneyGeneratingEntity)
+        # TODO: Error handling
+        entity_id = int(entity_id)
+
+        entity = game.AVAILABLE_ENTITIES.get(entity_id, None)
+        if entity is None:
+            raise ValueError('%d is not a valid entity id!')
+
+        assert issubclass(entity, game.AbstractMoneyGeneratingEntity)
 
         # TODO: Wrap this so it can be shown on the interface
         if self.money < entity.MONEY_COST:
-            raise ValueError('Not enough money to purchase entity!')
+            raise exception.NotEnoughMoneyException()
 
         self.money -= entity.MONEY_COST
         self.owned_entities[entity.__class__] += 1
@@ -36,4 +51,11 @@ class Player(object):
 
     @property
     def serialized_player(self):
+        """Serialized version of a player attribute to keep in the session
+
+        As the Player object becomes more complex we might need to do some
+        real serialising to keep the player object in the session.
+        """
         return self.__dict__
+
+DATABASE = {}

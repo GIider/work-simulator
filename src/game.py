@@ -4,6 +4,9 @@
 class AbstractMoneyGeneratingEntity(object):
     """A abstract entity that generates money"""
 
+    # Numeric ID of the entity
+    ID = None
+
     # The amount of dosh we generate each interval
     MONEY_GENERATED = None
 
@@ -14,9 +17,10 @@ class AbstractMoneyGeneratingEntity(object):
     MONEY_COST = None
 
 
-class Trainee(object):
+class Trainee(AbstractMoneyGeneratingEntity):
     """A concrete entity that generates money"""
 
+    ID = 1
     MONEY_GENERATED = 10
     MONEY_INTERVAL = 5
     MONEY_COST = 1
@@ -24,4 +28,5 @@ class Trainee(object):
     def __repr__(self):
         return 'Trainee'
 
-AVAILABLE_ENTITIES = [Trainee]
+# A dictionary of all entities that are available for purchase
+AVAILABLE_ENTITIES = {Trainee.ID: Trainee}

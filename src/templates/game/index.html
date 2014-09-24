@@ -9,7 +9,9 @@
     </nav>
 
     {% block game_content %}
-        Here it comes...
+        Hey {{ session['player'].username }}!
+
+        You currently have {{ session['player']['money'] }} dosh!
     {% endblock %}
 
 {% endblock %}

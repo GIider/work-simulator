@@ -1,5 +1,11 @@
 {% extends "game/index.html" %}
 
 {% block game_content %}
-    You currently own... nothing
+    {% if error %}
+        <font color="RED">{{ error }}</font> <br>
+    {% endif %}
+
+    You currently own... ... ... I dunno :( <br>
+
+    <a href="/game/purchase/1">Purchase a Trainee</a>
 {% endblock %}
