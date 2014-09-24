@@ -56,6 +56,9 @@ class Player(object):
         As the Player object becomes more complex we might need to do some
         real serialising to keep the player object in the session.
         """
-        return self.__dict__
+        serialized = self.__dict__.copy()
+        serialized.pop('owned_entities')
+
+        return serialized
 
 DATABASE = {}
