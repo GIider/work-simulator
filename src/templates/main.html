@@ -16,7 +16,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
 </head>
 <body>
 
@@ -26,10 +26,8 @@
         <a href="/">
             <h1 class="main-headline">The Ultimate Work Simulator</h1>
         </a>
-        <nav>
-            <ul class="main-nav-items">
-
-                <li><a href="/game">Game</a></li>
+        <nav class="main-nav">
+            <ul>
                 {% if 'player' not in session %}
                 <li><a href="/pages/login">Login</a></li>
                 {% else %}
@@ -45,5 +43,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/angular.min.js') }}"></script>
 </body>
 </html>
