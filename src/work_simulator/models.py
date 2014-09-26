@@ -11,11 +11,32 @@ class Player(db.Model):
     name = db.Column(db.String(80))
     money = db.Column(db.Integer)
 
-    def __init__(self, name):
+    STARTING_MONEY = 100
+
+    def __init__(self, name, money=None):
         self.name = name
+
+        if money is None:
+            money = self.STARTING_MONEY
+
+        self.money = money
 
     def __repr__(self):
         return '<Player {}>'.format(self.name)
+
+    @classmethod
+    def create_if_not_exists(cls, username):
+        """Retrieve a user from the database or create a new one"""
+        result = cls.query.filter_by(name=username).first()
+
+        if result is not None:
+            return result
+
+        new_player = cls(name=username)
+        db.session.add(new_player)
+        db.session.commit()
+
+        return new_player
 
 # Make sure all tables exist when we run for the first time
 db.create_all()
