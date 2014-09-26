@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, redirect, session
+from flask import render_template, request, redirect, session
 
 from . import app, decorator, player, exception
 
@@ -56,7 +56,7 @@ def purchase(entity):
 
     error = None
     try:
-        player_instance .acquire_entity(entity)
+        player_instance.acquire_entity(entity)
     except exception.NotEnoughMoneyException:
         error = 'Not enough funds!'
 

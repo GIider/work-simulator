@@ -13,3 +13,4 @@ from . import decorator
 from . import player
 from . import exception
 from . import models
+from . import views
