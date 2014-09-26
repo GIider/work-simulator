@@ -60,4 +60,5 @@ class Player(object):
 
         return serialized
 
+
 DATABASE = {}

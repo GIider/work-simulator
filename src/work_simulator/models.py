@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# from flask.ext.restless import APIManager
+from flask.ext.restless import APIManager
 
-from . import db
+from . import db, app
 
-# api_manager = APIManager(app, flask_sqlalchemy_db=db)
+api_manager = APIManager(app, flask_sqlalchemy_db=db)
 
 
 class Player(db.Model):
@@ -17,11 +17,9 @@ class Player(db.Model):
         return '<Player {}>'.format(self.name)
 
 
-"""
 # models for which we want to create API endpoints
 app.config['API_MODELS'] = {'player': Player}
 
 # models for which we want to create CRUD-style URL endpoints,
 # and pass the routing onto our AngularJS application
 app.config['CRUD_URL_MODELS'] = {'player': Player}
-"""
