@@ -1,20 +1,7 @@
 # -*- coding: utf-8 -*-
-import os
-
 from flask import Flask, render_template, request, redirect, session
 
-import decorator
-import player
-import exception
-
-app = Flask(__name__)
-
-# Use os.urandom(32) to generate a new secret key every time we restart
-# to invalidate the session.
-# If you want a persisting session while you modify files simply use a static
-# string
-
-app.secret_key = 'Bruce Schneier knows Alice and Bob\'s shared secret.'  # os.urandom(32)
+from . import app, decorator, player, exception
 
 
 @app.route('/')
@@ -76,6 +63,3 @@ def purchase(entity):
     session['player'] = player.Player.get_player_from_database(username=username).serialized_player
 
     return render_template('game/acquirebondsman.html', error=error)
-
-if __name__ == '__main__':
-    app.run(debug=True)

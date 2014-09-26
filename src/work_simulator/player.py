@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import defaultdict
 
-import game
-import exception
+from . import exception, game
 
 
 class Player(object):
