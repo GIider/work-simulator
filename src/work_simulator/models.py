@@ -23,3 +23,5 @@ app.config['API_MODELS'] = {'player': Player}
 # models for which we want to create CRUD-style URL endpoints,
 # and pass the routing onto our AngularJS application
 app.config['CRUD_URL_MODELS'] = {'player': Player}
+
+api_manager.create_api(Player, methods=['GET', 'POST', 'DELETE'])
