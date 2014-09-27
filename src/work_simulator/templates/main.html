@@ -1,14 +1,18 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="workSimulator">
 <head>
   <meta charset="utf-8">
   <title>The Ultimate Work Simulator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+  <script src="js/controllers.js"></script>
 </head>
-<body>
-
-  <p>Nothing here {{'yet' + '!'}}</p>
-
+<body ng-controller="PlayerListController">
+  <ul>
+    <li ng-repeat="player in players">
+      <p>{{player.name}}</p>
+    </li>
+  </ul>
 </body>
 </html>

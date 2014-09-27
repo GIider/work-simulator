@@ -11,4 +11,4 @@ db = SQLAlchemy(app)
 api_manager = APIManager(app, flask_sqlalchemy_db=db)
 
 from . import models
-from . import views
+from . import controllers
