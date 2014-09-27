@@ -28,6 +28,10 @@
           return $location.path('/');
         }
       };
+      $scope.logout = function() {
+        player.loggedIn = false;
+        return player.name = '';
+      };
       return $scope.player = player;
     }
   ]);

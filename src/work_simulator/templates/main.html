@@ -31,6 +31,7 @@
             <ul>
                 <li ng-hide="player.loggedIn"><a href="#/login">Login</a></li>
                 <li ng-hide="player.loggedIn"><a href="#/registration">Registration</a></li>
+                <li ng-show="player.loggedIn"><a href="#/logout" ng-click="logout()">Logout</a></li>
             </ul>
         </nav>
     </header>

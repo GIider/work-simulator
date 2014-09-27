@@ -26,5 +26,9 @@ app.controller 'PlayerController', ['$scope', '$http', '$location', ($scope, $ht
     if player.loggedIn
       $location.path('/')
 
+  $scope.logout = () ->
+    player.loggedIn = false
+    player.name = ''
+
   $scope.player = player
 ]
