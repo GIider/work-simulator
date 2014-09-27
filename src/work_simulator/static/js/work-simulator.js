@@ -6,7 +6,13 @@
 
   app.config([
     '$routeProvider', function($routeProvider) {
-      return $routeProvider.when('/');
+      return $routeProvider.when('/registration', {
+        templateUrl: 'static/partials/pages/registration.html'
+      }).when('/login', {
+        templateUrl: 'static/partials/pages/login.html'
+      }).otherwise({
+        templateUrl: 'static/partials/pages/index.html'
+      });
     }
   ]);
 
