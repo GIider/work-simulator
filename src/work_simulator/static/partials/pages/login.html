@@ -1,13 +1,5 @@
-{% extends "main.html" %}
-
-{% block content %}
-
-<form role="form" action="/pages/login" method="post">
+<form role="form" method="post">
     <h2>Login you scrub</h2>
-
-    {% if error %}
-        Login failed! {{ error }}
-    {% endif %}
 
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
@@ -22,5 +14,3 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </div>
 </form>
-
-{% endblock %}

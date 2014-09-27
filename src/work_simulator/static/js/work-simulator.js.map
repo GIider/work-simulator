@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "work-simulator.js",
+  "sourceRoot": "",
+  "sources": [
+    "work-simulator.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA;AAAA,MAAA,GAAA;;AAAA,EAAA,GAAA,GAAM,OAAO,CAAC,MAAR,CAAe,eAAf,EAAgC,CAAC,SAAD,CAAhC,CAAN,CAAA;;AAAA,EAEA,GAAG,CAAC,MAAJ,CAAW;IAAC,gBAAD,EAAmB,SAAC,cAAD,GAAA;aAC5B,cACE,CAAC,IADH,CACQ,GADR,EAD4B;IAAA,CAAnB;GAAX,CAFA,CAAA;AAAA"
+}
