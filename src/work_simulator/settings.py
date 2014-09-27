@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+
 DEBUG = True
 
 # Use os.urandom(32) to generate a new secret key every time we restart
