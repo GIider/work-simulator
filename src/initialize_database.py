@@ -12,4 +12,4 @@ for player_name in PLAYER_NAMES:
 trainee = models.Entity.create_if_not_exists(name='Azubi', money_generated=1, money_cost=0, money_interval=5)
 
 for player_id in players:
-    models.OwnedEntities.set_owned_amount_for_player(player_id=player.id, entity_id=trainee.id, amount=5)
+    models.OwnedEntities.set_owned_amount_for_player(player_id=player_id, entity_id=trainee.id, amount=5)
