@@ -16,6 +16,22 @@
     }
   ]);
 
+  app.controller('PlayerController', [
+    '$scope', '$http', '$location', function($scope, $http, $location) {
+      var player;
+      player = {
+        loggedIn: false
+      };
+      $scope.login = function() {
+        player.loggedIn = true;
+        if (player.loggedIn) {
+          return $location.path('/');
+        }
+      };
+      return $scope.player = player;
+    }
+  ]);
+
 }).call(this);
 
 //# sourceMappingURL=work-simulator.js.map

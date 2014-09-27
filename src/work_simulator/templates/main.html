@@ -20,7 +20,8 @@
 </head>
 <body>
 
-<div class="container">
+{% raw %}
+<div class="container" ng-controller="PlayerController">
 
     <header>
         <a href="/">
@@ -28,15 +29,19 @@
         </a>
         <nav class="main-nav">
             <ul>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/registration">Registration</a></li>
+                <li ng-hide="player.loggedIn"><a href="#/login">Login</a></li>
+                <li ng-hide="player.loggedIn"><a href="#/registration">Registration</a></li>
             </ul>
         </nav>
     </header>
 
+
+    <strong ng-show="player.loggedIn">Hello, {{ player.name }}</strong>
+
     <div ng-view></div>
 
 </div>
+{% endraw %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

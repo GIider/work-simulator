@@ -13,3 +13,18 @@ app.config ['$routeProvider', ($routeProvider) ->
       templateUrl: 'static/partials/pages/index.html'
     })
 ]
+
+app.controller 'PlayerController', ['$scope', '$http', '$location', ($scope, $http, $location)->
+  player = {
+    loggedIn: false
+  }
+
+  $scope.login = () ->
+    # use $http to login player
+    player.loggedIn = true
+
+    if player.loggedIn
+      $location.path('/')
+
+  $scope.player = player
+]

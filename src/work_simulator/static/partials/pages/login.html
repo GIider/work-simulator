@@ -1,8 +1,8 @@
-<form role="form" method="post">
+<form name="loginForm" role="form" method="post" ng-submit="login()" novalidate>
     <h2>Login you scrub</h2>
 
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
+        <input ng-model="player.name" type="text" class="form-control" placeholder="Username" name="username" required autofocus>
         <!--
         <input type="password" class="form-control" placeholder="Password" value="123lol" required>
         <label class="checkbox">
