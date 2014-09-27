@@ -1,48 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %} The Ultimate Work Simulator {% endblock %}</title>
-
-    {# Bootstrap #}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>The Ultimate Work Simulator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
 </head>
 <body>
 
-<div class="container">
+  <p>Nothing here {{'yet' + '!'}}</p>
 
-    <header>
-        <a href="/">
-            <h1 class="main-headline">The Ultimate Work Simulator</h1>
-        </a>
-        <nav class="main-nav">
-            <ul>
-                {% if 'player' not in session %}
-                <li><a href="/pages/login">Login</a></li>
-                {% else %}
-                <li><a href="/pages/logout">Logout</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-
-    {% block content %} {% endblock %}
-
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='js/angular.min.js') }}"></script>
 </body>
 </html>
