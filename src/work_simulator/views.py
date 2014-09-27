@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import render_template, request, redirect, session
 
-from . import app, decorator, player, exception
+from . import app, decorator, exception
 
 
 @app.route('/')

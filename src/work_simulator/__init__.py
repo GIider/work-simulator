@@ -10,7 +10,6 @@ db = SQLAlchemy(app)
 api_manager = APIManager(app, flask_sqlalchemy_db=db)
 
 from . import decorator
-from . import player
 from . import exception
 from . import models
 from . import views
