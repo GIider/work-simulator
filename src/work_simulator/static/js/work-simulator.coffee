@@ -1,5 +1,5 @@
 
-app = angular.module 'workSimulator', ['ngRoute']
+app = angular.module 'workSimulator', ['ngRoute', 'wsPlayer']
 
 app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider
@@ -12,23 +12,4 @@ app.config ['$routeProvider', ($routeProvider) ->
     .otherwise({
       templateUrl: 'static/partials/pages/index.html'
     })
-]
-
-app.controller 'PlayerController', ['$scope', '$http', '$location', ($scope, $http, $location)->
-  player = {
-    loggedIn: false
-  }
-
-  $scope.login = () ->
-    # use $http to login player
-    player.loggedIn = true
-
-    if player.loggedIn
-      $location.path('/')
-
-  $scope.logout = () ->
-    player.loggedIn = false
-    player.name = ''
-
-  $scope.player = player
 ]

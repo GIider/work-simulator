@@ -44,10 +44,20 @@
 </div>
 {% endraw %}
 
+{# jQuery #}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+{# Bootstrap #}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+{# AngularJS and modules #}
 <script src="{{ url_for('static', filename='js/angular.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/angular.route.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/angular-route.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/angular-resource.min.js') }}"></script>
+
+{# Work Simulator #}
 <script src="{{ url_for('static', filename='js/work-simulator.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ws-player.js') }}"></script>
+
 </body>
 </html>

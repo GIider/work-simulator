@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('workSimulator', ['ngRoute']);
+  app = angular.module('workSimulator', ['ngRoute', 'wsPlayer']);
 
   app.config([
     '$routeProvider', function($routeProvider) {
@@ -13,26 +13,6 @@
       }).otherwise({
         templateUrl: 'static/partials/pages/index.html'
       });
-    }
-  ]);
-
-  app.controller('PlayerController', [
-    '$scope', '$http', '$location', function($scope, $http, $location) {
-      var player;
-      player = {
-        loggedIn: false
-      };
-      $scope.login = function() {
-        player.loggedIn = true;
-        if (player.loggedIn) {
-          return $location.path('/');
-        }
-      };
-      $scope.logout = function() {
-        player.loggedIn = false;
-        return player.name = '';
-      };
-      return $scope.player = player;
     }
   ]);
 
