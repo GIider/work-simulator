@@ -5,28 +5,27 @@
   app = angular.module('wsPlayer', ['ngResource']);
 
   app.controller('PlayerController', [
-    '$scope', '$location', function($scope, $location) {
-      var player;
-      player = {
-        loggedIn: false
-      };
+    '$scope', '$location', 'Player', function($scope, $location, Player) {
       $scope.login = function() {
-        player.loggedIn = true;
-        if (player.loggedIn) {
+        Player.loggedIn = true;
+        if (Player.loggedIn) {
           return $location.path('/');
         }
       };
       $scope.logout = function() {
-        player.loggedIn = false;
-        return player.name = '';
+        Player.loggedIn = false;
+        return Player.name = '';
       };
-      return $scope.player = player;
+      return $scope.player = Player;
     }
   ]);
 
   app.factory('Player', [
     '$resource', function($resource) {
-      return $resource('player/:playerId');
+      return {
+        loggedIn: false,
+        resource: $resource('player/:playerId')
+      };
     }
   ]);
 

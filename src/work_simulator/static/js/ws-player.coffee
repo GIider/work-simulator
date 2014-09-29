@@ -1,25 +1,24 @@
 app = angular.module 'wsPlayer', ['ngResource']
 
-app.controller 'PlayerController', ['$scope', '$location', ($scope, $location)->
-  player = {
-    loggedIn: false
-  }
-
+app.controller 'PlayerController', ['$scope', '$location', 'Player', ($scope, $location, Player)->
   $scope.login = () ->
-    player.loggedIn = true
+    Player.loggedIn = true
 
-    if player.loggedIn
+    if Player.loggedIn
       $location.path('/')
 
   $scope.logout = () ->
-    player.loggedIn = false
-    player.name = ''
+    Player.loggedIn = false
+    Player.name = ''
 
-  $scope.player = player
+  $scope.player = Player
 ]
 
 app.factory 'Player', ['$resource', ($resource) ->
-  $resource('player/:playerId')
+  {
+    loggedIn: false,
+    resource:   $resource('player/:playerId')
+  }
 ]
 
 app.directive 'playerLogin', ->
